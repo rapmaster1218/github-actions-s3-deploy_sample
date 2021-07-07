@@ -1,0 +1,25 @@
+name: s3-upload
+on:
+  push:
+    branches:
+      - main
+jobs:
+  UploadStaticFiles:
+    name: Upload S3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: "Configure AWS credentials"
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
+
+      - name: Upload file to S3
+        working-directory:sample
+        run: |
+            aws s3 cp text.txt s3://r-ohzeki-test/
+            aws s3 cp ./directory s3://r-ohzeki-test/directory --recursive
