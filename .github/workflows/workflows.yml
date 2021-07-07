@@ -19,7 +19,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Upload file to S3
-        working-directory:sample
+        working-directory: sample
         run: |
             aws s3 cp text.txt s3://r-ohzeki-test/
             aws s3 cp ./directory s3://r-ohzeki-test/directory --recursive
