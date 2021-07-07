@@ -21,5 +21,5 @@ jobs:
       - name: Upload file to S3
         working-directory: sample
         run: |
-            aws s3 cp text.txt s3://r-ohzeki-test/
+            aws s3 cp test.txt s3://r-ohzeki-test/
             aws s3 cp ./directory s3://r-ohzeki-test/directory --recursive
