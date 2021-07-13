@@ -8,6 +8,7 @@ on:
               
 jobs:
   UploadStaticFiles:
+  if: github.event.pull_request.merged      
     name: Upload S3
     runs-on: ubuntu-latest
     steps:
